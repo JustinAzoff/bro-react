@@ -5,10 +5,10 @@ import json
 import time
 
 class ACLClient:
-    def __init__(self, host, port=9000):
+    def __init__(self, host, port=9000, timeout=1):
         self.addr = (host, port)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.sock.settimeout(1)
+        self.sock.settimeout(timeout)
 
     def add_acl(self, src, dst, proto="ip", sport=None, dport=None):
         msg = json.dumps(dict(src=src,dst=dst,proto=proto,sport=sport,dport=dport))
@@ -26,8 +26,8 @@ def main():
     sport, proto = sport.split("/")
     dport, _     = dport.split("/")
 
-    c=ACLClient(manager)
-    for x in range(1,31):
+    for x in range(1,8):
+        c = ACLClient(manager, timeout=x)
         if c.add_acl(src, dst, proto, sport, dport):
             print "ok, attempt:", x
             return 0
