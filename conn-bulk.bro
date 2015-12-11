@@ -9,7 +9,7 @@ export {
     const size_threshold = 134217728 &redef; #128 megabytes
 
     ## Max number of times to check whether a connection's size exceeds the
-    ## :bro:see:`GridFTP::size_threshold`.
+    ## :bro:see:`Bulk::size_threshold`.
     const max_poll_count = 30 &redef;
 
     ## Base amount of time between checking whether a data connection
