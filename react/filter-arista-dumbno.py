@@ -26,8 +26,8 @@ def main():
     sport, proto = sport.split("/")
     dport, _     = dport.split("/")
 
-    for x in range(1,8):
-        c = ACLClient(manager, timeout=x)
+    for x in range(2):
+        c = ACLClient(manager, timeout=15)
         if c.add_acl(src, dst, proto, sport, dport):
             print "ok, attempt:", x
             return 0
