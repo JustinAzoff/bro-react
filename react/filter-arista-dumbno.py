@@ -12,7 +12,7 @@ class ACLClient:
 
     def add_acl(self, src, dst, proto="ip", sport=None, dport=None):
         msg = json.dumps(dict(src=src,dst=dst,proto=proto,sport=sport,dport=dport))
-        self.sock.sendto(msg, self.addr)
+        self.sock.sendto(msg.encode(), self.addr)
         try :
             data, addr = self.sock.recvfrom(1024)
             return True
