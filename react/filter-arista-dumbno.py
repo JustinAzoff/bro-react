@@ -29,9 +29,9 @@ def main():
     for x in range(2):
         c = ACLClient(manager, timeout=15)
         if c.add_acl(src, dst, proto, sport, dport):
-            print "ok, attempt:", x
+            print ("ok, attempt:", x)
             return 0
-    print "fail"
+    print ("fail")
     return 1
 
 if __name__ == "__main__":
